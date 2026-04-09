@@ -12,5 +12,6 @@ public class A062_114502540
             if(Character.isLetter(c) || Character.isDigit(c)) sb.insert(0, c);
         }
         System.out.println(sb.toString());
+        sc.close();
     }
 }

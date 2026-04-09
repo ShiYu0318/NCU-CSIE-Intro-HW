@@ -21,5 +21,6 @@ public class A061_114502540
             if(price >= 500) System.out.println("敗家項目:" + name + "(" + price + ")");
         }
         System.out.println("Most Expensive Item:" + maxName + ",Price:" + maxPrice);
+        sc.close();
     }
 }
