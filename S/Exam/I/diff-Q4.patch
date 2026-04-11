@@ -1,0 +1,151 @@
+--- /Users/shiyu./Desktop/CP-Code/_HW/S/Exam/I/DL/4/toStudent.cpp	2026-04-10 09:53:32
++++ /Users/shiyu./Desktop/CP-Code/_HW/S/Exam/I/UL/Q4.cpp	2026-04-11 05:10:36
+@@ -3,7 +3,7 @@
+ #include <algorithm>
+ using namespace std;
+ 
+-bool debugMode = true;
++bool debugMode = false;
+ 
+ template <typename T>
+ void inputWithPrompt(const string &prompt, T &value)
+\ No newline at end of file
+@@ -114,7 +114,15 @@
+     */
+     bool hasTimeConflict(const Performance &p) const
+     {
+-        // TODO
++        for(const auto &i : performances)
++        {
++            int s1 = i.getStartTime(),
++                e1 = i.getEndTime(),
++                s2 = p.getStartTime(),
++                e2 = p.getEndTime();
++            // if intervals overlap -> conflict
++            if (!(e1 <= s2 || e2 <= s1)) return true;
++        }
+         return false;
+     }
+ 
+\ No newline at end of file
+@@ -124,14 +132,18 @@
+     */
+     void addPerformance(const Performance &p)
+     {
+-        // TODO
++        if (hasTimeConflict(p)) cout << "Time conflict!" << endl;
++        else performances.push_back(p);
+     }
+ 
+     // TODO:依開始時間排序所有演出
+     // Sort all performances by start time
+     void sortPerformances()
+     {
+-        // TODO
++        sort(performances.begin(), performances.end(), 
++            [](const Performance &a, const Performance &b) 
++            { return a.getStartTime() < b.getStartTime(); }
++        );
+     }
+ 
+     void showSchedule()
+\ No newline at end of file
+@@ -155,14 +167,22 @@
+     // Remove all performances with the specified bandName
+     void removePerformancesByBand(string bandName)
+     {
+-        // TODO
++        performances.erase(
++            remove_if(performances.begin(), performances.end(), 
++                [&](const Performance &p) 
++                { return p.getBandName() == bandName; }
++            ), performances.end()
++        );
+     }
+ 
+     // TODO: 檢查某樂團是否已在此舞台演出
+     // Check whether a given band is already performing on this stage
+     bool hasBand(string bandName) const
+     {
+-        // TODO
++        for(const auto &p : performances)
++        {
++            if(p.getBandName() == bandName) return true;
++        }
+         return false;
+     }
+ 
+\ No newline at end of file
+@@ -261,7 +281,19 @@
+     */
+     bool hasBandScheduleConflict(const Performance &p, string currentStageName) const
+     {
+-        // TODO
++        for(const auto &s : stages)
++        {
++            if(s.getStageName() == currentStageName) continue;
++            for(const auto &i : s.getPerformances())
++            {
++                if(i.getBandName() != p.getBandName()) continue;
++                int s1 = i.getStartTime();
++                int e1 = i.getEndTime();
++                int s2 = p.getStartTime();
++                int e2 = p.getEndTime();
++                if(!(e1 <= s2 || e2 <= s1)) return true;
++            }
++        }
+         return false;
+     }
+ 
+\ No newline at end of file
+@@ -288,9 +320,30 @@
+         string stageName;
+         inputWithPrompt("Enter stage name: ", stageName);
+         Performance p;
+-        // TODO
++        p.input();
++
++        if(findBandIndex(p.getBandName()) == -1)
++        {
++            cout << "Band not found!\n";
++            return;
+     }
+ 
++        int sidx = findStageIndex(stageName);
++        if(sidx == -1)
++        {
++            cout << "Stage not found!\n";
++            return;
++        }
++
++        if (hasBandScheduleConflict(p, stageName))
++        {
++            cout << "Band schedule conflict!\n";
++            return;
++        }
++
++        stages[sidx].addPerformance(p);
++    }
++
+     void showAllSchedules()
+     {
+         if (stages.empty())
+\ No newline at end of file
+@@ -321,8 +374,15 @@
+     */
+     void removeBand(string bandName)
+     {
+-        // TODO
++        int bidx = findBandIndex(bandName);
++        if (bidx == -1)
++        {
++            cout << "Band not found!" << endl;
++            return;
+     }
++        bands.erase(bands.begin() + bidx);
++        for(auto &s : stages) s.removePerformancesByBand(bandName);
++    }
+ };
+ 
+ int main()
+\ No newline at end of file
