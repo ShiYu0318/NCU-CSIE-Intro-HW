@@ -22,9 +22,9 @@ HWXX
 │   ├── 範例程式碼.java
 │   ├── 標頭檔.h
 │   └── 文字讀寫檔.txt
-├── UL  # 存放上傳（UpLoad）到 ee-class 和 DOMJudge 的檔案，通常以我的學號命名（請勿直接交我的學號）
-│   ├── AXX_114502540.cpp
-│   └── AXX_114502540.java
+├── UL  # 存放上傳（UpLoad）到 ee-class 和 DOMJudge 的檔案
+│   ├── AXX_114502XXX.cpp
+│   └── AXX_114502XXX.java
 ├── output # 存放自動測試腳本 `test.sh` 產出的檔案
 │   ├── main    # C++ 編譯執行檔
 │   ├── Main.class  # Java 類別檔
