@@ -1,8 +1,5 @@
 # NCU-CSIE-Intro-HW
 
-![GitHub stars](https://img.shields.io/github/stars/ShiYu0318/NCU-CSIE-Intro-HW?style=social)
-![GitHub followers](https://img.shields.io/github/followers/ShiYu0318?style=social)
-
 中央資工大一計概作業與上機考解法
 
 > 我的解法僅供參考並且不保證為最佳解，複製貼上被助教抓到請自行負責
