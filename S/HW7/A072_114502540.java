@@ -18,6 +18,7 @@ public class A072_114502540
             if(s.charAt(i) == 'R') R.offer(i);
             else B.offer(i);
         }
+
         while(!R.isEmpty() && !B.isEmpty())
         {
             int r = R.poll();
@@ -26,6 +27,7 @@ public class A072_114502540
             if(r < b) R.offer(r + n);
             else B.offer(b + n);
         }
+        
         System.out.println(R.isEmpty() ? "BLUE" : "RED");
         sc.close();
     }

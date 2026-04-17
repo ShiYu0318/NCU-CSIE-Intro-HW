@@ -53,7 +53,7 @@ public class A071_114502540
         for(int i=0; i<r; ++i) for(int j=0; j<c; ++j)    // 枚舉左上
         for(int k=i; k<r; ++k) for(int l=j; l<c; ++l)    // 枚舉右下
         {
-            int sub = 0;    // 子矩陣和加總
+            int sub = 0;    // 加總子矩陣各元素
             for(int m=i; m<=k; ++m) for(int n=j; n<=l; ++n) sub += mat[m][n];
             maxSum = Math.max(maxSum, sub);
         }
