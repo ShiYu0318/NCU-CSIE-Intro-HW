@@ -19,7 +19,7 @@ interface Swimmable {
 }
 
 // 一個 class 只能 extends 一個 class
-// 但可以 implements 多個 interface！
+// 但可以 implements 多個 interface
 class Duck extends Animal implements Flyable, Swimmable {
     public Duck(String name, int age) {
         super(name, age);

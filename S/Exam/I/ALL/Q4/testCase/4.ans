@@ -1,0 +1,16 @@
+Time conflict!
+Band schedule conflict!
+=== Schedule of Stage1 ===
+Band: BandA, Time: 10:00 - 12:00
+Band: BandB, Time: 12:00 - 14:00
+
+=== Schedule of Stage2 ===
+Band: BandA, Time: 12:00 - 14:00
+Band: BandC, Time: 14:00 - 16:00
+
+=== Schedule of Stage1 ===
+Band: BandB, Time: 12:00 - 14:00
+
+=== Schedule of Stage2 ===
+Band: BandC, Time: 14:00 - 16:00
+

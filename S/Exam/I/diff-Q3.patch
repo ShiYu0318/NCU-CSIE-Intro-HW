@@ -1,5 +1,5 @@
 --- /Users/shiyu./Desktop/CP-Code/_HW/S/Exam/I/DL/3/TODO.java	2026-04-10 09:52:59
-+++ /Users/shiyu./Desktop/CP-Code/_HW/S/Exam/I/UL/Q3.java	2026-04-11 04:59:59
++++ /Users/shiyu./Desktop/CP-Code/_HW/S/Exam/I/UL/Q3.java	2026-04-17 08:21:10
 @@ -3,6 +3,7 @@
  interface SpecialAttacker {
      // TODO 1: 定義方法原型
@@ -19,16 +19,16 @@
  
      public Pokemon(String name, String type, int s, int v) {
          // TODO: 實作建構子
-+        this.id = ++totalCount;
 +        this.name = name;
 +        this.type = type;
 +        this.strength = s;
 +        this.speed = v;
++        this.id = ++totalCount;
      }
  
      public int getBasePower() {
          // TODO: 實作公式
-+        return strength * 2 + speed * 3;
++        return 7 * strength + 5 * speed;
      }
  
      public String getType() { return type; }
@@ -43,7 +43,7 @@
  
  // TODO 3: 實作四種神奇寶貝類別
 \ No newline at end of file
-@@ -39,16 +51,96 @@
+@@ -39,20 +51,106 @@
  class Pikachu extends Pokemon implements SpecialAttacker {
      public Pikachu() { 
          // TODO: 呼叫父類別建構子，並傳入正確的名稱("Pikachu")、屬性("Electric")、力量(10)與速度(7)
@@ -51,10 +51,12 @@
      }
  
      // TODO: 實作 makeSound (印出 "Pikachu: Pika Pika!")
++    @Override
 +    public void makeSound() {
 +        System.out.println("Pikachu: Pika Pika!");
 +    }
      // TODO: 實作 eat (印出 "Pikachu is eating food." 並顯示 [Str: 舊->新, Spd: 舊->新])
++    @Override
 +    public void eat() {
 +        int oldS = strength;
 +        int oldV = speed;
@@ -63,67 +65,25 @@
 +        System.out.println("Pikachu is eating food. [Str: " + oldS + "->" + strength + ", Spd: " + oldV + "->" + speed + "]");
 +    }
      // TODO: 實作 getSpecialPower (公式：7 * (strength * 2) + 5 * speed)
++    @Override
 +    public int getSpecialPower() {
-+        return 7 * (strength * 2) + 5 * speed;
++        return 7 * strength * 2 + 5 * speed;
  }
 +}
  
  // (其餘 Charmander, Piplup, Treecko 類別也請依照題目規則實作...)
  
- 
-+class Piplup extends Pokemon {
-+    public Piplup() {
-+        super("Piplup", "Water", 7, 5);
-+    }
-+
-+    public void makeSound() {
-+        System.out.println("Piplup: Piplup!");
-+    }
-+
-+    public void eat() {
-+        int oldS = strength;
-+        int oldV = speed;
-+        strength += 1;
-+        speed += 3;
-+        System.out.println("Piplup is eating food. [Str: " + oldS + "->" + strength + ", Spd: " + oldV + "->" + speed + "]");
-+    }
-+
-+    public int getSpecialPower() {
-+        return 7 * strength + 5 * speed;
-+    }
-+}
-+
-+class Treecko extends Pokemon {
-+    public Treecko() {
-+        super("Treecko", "Grass", 6, 10);
-+    }
-+
-+    public void makeSound() {
-+        System.out.println("Treecko: Treecko!" );
-+    }
-+
-+    public void eat() {
-+        int oldS = strength;
-+        int oldV = speed;
-+        // strength += 0;
-+        speed += 5;
-+        System.out.println("Treecko is eating food. [Str: " + oldS + "->" + strength + ", Spd: " + oldV + "->" + speed + "]");
-+    }
-+
-+    public int getSpecialPower() {
-+        return 7 * strength + 5 * speed * 3;
-+    }
-+}
-+
-+class Charmander extends Pokemon {
++class Charmander extends Pokemon implements SpecialAttacker {
 +    public Charmander() {
 +        super("Charmander", "Fire", 8, 8);
 +    }
-+
+ 
++    @Override
 +    public void makeSound() {
 +        System.out.println("Charmander: Charrr!");
 +    }
 +
++    @Override
 +    public void eat() {
 +        int oldS = strength;
 +        int oldV = speed;
@@ -132,12 +92,63 @@
 +        System.out.println("Charmander is eating food. [Str: " + oldS + "->" + strength + ", Spd: " + oldV + "->" + speed + "]");
 +    }
 +
++    @Override
 +    public int getSpecialPower() {
 +        return (int)(getBasePower() * 1.2);
++    }
++}
++
++class Piplup extends Pokemon {
++    public Piplup() {
++        super("Piplup", "Water", 7, 5);
++    }
++
++    @Override
++    public void makeSound() {
++        System.out.println("Piplup: Piplup!");
++    }
++
++    @Override
++    public void eat() {
++        int oldS = strength;
++        int oldV = speed;
++        strength += 1;
++        speed += 3;
++        System.out.println("Piplup is eating food. [Str: " + oldS + "->" + strength + ", Spd: " + oldV + "->" + speed + "]");
++    }
++}
++
++class Treecko extends Pokemon implements SpecialAttacker {
++    public Treecko() {
++        super("Treecko", "Grass", 6, 10);
++    }
++
++    @Override
++    public void makeSound() {
++        System.out.println("Treecko: Treecko!" );
++    }
++
++    @Override
++    public void eat() {
++        int oldS = strength;
++        int oldV = speed;
++        // strength += 0;
++        speed += 5;
++        System.out.println("Treecko is eating food. [Str: " + oldS + "->" + strength + ", Spd: " + oldV + "->" + speed + "]");
++    }
++
++    @Override
++    public int getSpecialPower() {
++        return 7 * strength + 5 * speed * 3;
 +    }
 +}
 +
  // =========================================================
  // 以下為大木博士提供的測試主系統，請勿修改任何程式碼
  // =========================================================
+-public class TODO {
++public class Q3 {
+     public static boolean isStrongAgainst(String a, String b) {
+         if (a.equals("Fire") && b.equals("Grass")) return true;
+         if (a.equals("Grass") && b.equals("Water")) return true;
 \ No newline at end of file

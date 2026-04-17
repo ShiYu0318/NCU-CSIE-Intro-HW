@@ -22,16 +22,16 @@ abstract class Pokemon {
 
     public Pokemon(String name, String type, int s, int v) {
         // TODO: 實作建構子
-        this.id = ++totalCount;
         this.name = name;
         this.type = type;
         this.strength = s;
         this.speed = v;
+        this.id = ++totalCount;
     }
 
     public int getBasePower() {
         // TODO: 實作公式
-        return strength * 2 + speed * 3;
+        return 7 * strength + 5 * speed;
     }
 
     public String getType() { return type; }
@@ -55,10 +55,12 @@ class Pikachu extends Pokemon implements SpecialAttacker {
     }
 
     // TODO: 實作 makeSound (印出 "Pikachu: Pika Pika!")
+    @Override
     public void makeSound() {
         System.out.println("Pikachu: Pika Pika!");
     }
     // TODO: 實作 eat (印出 "Pikachu is eating food." 並顯示 [Str: 舊->新, Spd: 舊->新])
+    @Override
     public void eat() {
         int oldS = strength;
         int oldV = speed;
@@ -67,67 +69,25 @@ class Pikachu extends Pokemon implements SpecialAttacker {
         System.out.println("Pikachu is eating food. [Str: " + oldS + "->" + strength + ", Spd: " + oldV + "->" + speed + "]");
     }
     // TODO: 實作 getSpecialPower (公式：7 * (strength * 2) + 5 * speed)
+    @Override
     public int getSpecialPower() {
-        return 7 * (strength * 2) + 5 * speed;
+        return 7 * strength * 2 + 5 * speed;
     }
 }
 
 // (其餘 Charmander, Piplup, Treecko 類別也請依照題目規則實作...)
 
-
-class Piplup extends Pokemon {
-    public Piplup() {
-        super("Piplup", "Water", 7, 5);
-    }
-
-    public void makeSound() {
-        System.out.println("Piplup: Piplup!");
-    }
-
-    public void eat() {
-        int oldS = strength;
-        int oldV = speed;
-        strength += 1;
-        speed += 3;
-        System.out.println("Piplup is eating food. [Str: " + oldS + "->" + strength + ", Spd: " + oldV + "->" + speed + "]");
-    }
-
-    public int getSpecialPower() {
-        return 7 * strength + 5 * speed;
-    }
-}
-
-class Treecko extends Pokemon {
-    public Treecko() {
-        super("Treecko", "Grass", 6, 10);
-    }
-
-    public void makeSound() {
-        System.out.println("Treecko: Treecko!" );
-    }
-
-    public void eat() {
-        int oldS = strength;
-        int oldV = speed;
-        // strength += 0;
-        speed += 5;
-        System.out.println("Treecko is eating food. [Str: " + oldS + "->" + strength + ", Spd: " + oldV + "->" + speed + "]");
-    }
-
-    public int getSpecialPower() {
-        return 7 * strength + 5 * speed * 3;
-    }
-}
-
-class Charmander extends Pokemon {
+class Charmander extends Pokemon implements SpecialAttacker {
     public Charmander() {
         super("Charmander", "Fire", 8, 8);
     }
 
+    @Override
     public void makeSound() {
         System.out.println("Charmander: Charrr!");
     }
 
+    @Override
     public void eat() {
         int oldS = strength;
         int oldV = speed;
@@ -136,15 +96,61 @@ class Charmander extends Pokemon {
         System.out.println("Charmander is eating food. [Str: " + oldS + "->" + strength + ", Spd: " + oldV + "->" + speed + "]");
     }
 
+    @Override
     public int getSpecialPower() {
         return (int)(getBasePower() * 1.2);
+    }
+}
+
+class Piplup extends Pokemon {
+    public Piplup() {
+        super("Piplup", "Water", 7, 5);
+    }
+
+    @Override
+    public void makeSound() {
+        System.out.println("Piplup: Piplup!");
+    }
+
+    @Override
+    public void eat() {
+        int oldS = strength;
+        int oldV = speed;
+        strength += 1;
+        speed += 3;
+        System.out.println("Piplup is eating food. [Str: " + oldS + "->" + strength + ", Spd: " + oldV + "->" + speed + "]");
+    }
+}
+
+class Treecko extends Pokemon implements SpecialAttacker {
+    public Treecko() {
+        super("Treecko", "Grass", 6, 10);
+    }
+
+    @Override
+    public void makeSound() {
+        System.out.println("Treecko: Treecko!" );
+    }
+
+    @Override
+    public void eat() {
+        int oldS = strength;
+        int oldV = speed;
+        // strength += 0;
+        speed += 5;
+        System.out.println("Treecko is eating food. [Str: " + oldS + "->" + strength + ", Spd: " + oldV + "->" + speed + "]");
+    }
+
+    @Override
+    public int getSpecialPower() {
+        return 7 * strength + 5 * speed * 3;
     }
 }
 
 // =========================================================
 // 以下為大木博士提供的測試主系統，請勿修改任何程式碼
 // =========================================================
-public class TODO {
+public class Q3 {
     public static boolean isStrongAgainst(String a, String b) {
         if (a.equals("Fire") && b.equals("Grass")) return true;
         if (a.equals("Grass") && b.equals("Water")) return true;
