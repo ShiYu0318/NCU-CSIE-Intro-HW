@@ -1,4 +1,4 @@
-class Box 
+class Box
 {
     private:
         double width;
@@ -13,16 +13,16 @@ class Box
         friend class BoxOpener;
 };
 
-void printWidth(Box b) 
+void printWidth(Box b)
 {
     // 因為是 friend，可以存取 private 成員
     cout << "寬度：" << b.width << endl;
 }
 
-class BoxOpener 
+class BoxOpener
 {
     public:
-        void open(Box b) 
+        void open(Box b)
         {
             cout << "打開箱子，寬度是：" << b.width << endl;
         }
