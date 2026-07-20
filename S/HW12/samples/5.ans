@@ -1,0 +1,15 @@
+Enter main
+Enter controller
+Enter service
+Enter repository
+Enter database
+database throws PermissionDeniedException
+database finally
+repository finally
+service finally
+controller catches PermissionDeniedException
+Message: User has no permission
+controller finally
+Exit controller
+main finally
+Exit main

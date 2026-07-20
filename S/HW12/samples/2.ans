@@ -1,0 +1,16 @@
+Enter main
+Enter controller
+Enter service
+Enter repository
+Enter database
+database throws NullPointerException
+database finally
+repository finally
+service catches NullPointerException
+Message: Object is null
+service finally
+Exit service
+controller finally
+Exit controller
+main finally
+Exit main

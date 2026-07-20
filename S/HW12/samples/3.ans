@@ -1,0 +1,15 @@
+Enter main
+Enter controller
+Enter service
+Enter repository
+Enter database
+database throws NumberFormatException
+database finally
+repository finally
+service finally
+controller catches NumberFormatException
+Message: Cannot parse input
+controller finally
+Exit controller
+main finally
+Exit main

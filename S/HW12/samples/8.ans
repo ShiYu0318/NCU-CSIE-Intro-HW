@@ -1,0 +1,15 @@
+Enter main
+Enter controller
+Enter service
+Enter repository
+Enter database
+database throws LoginFailedException
+database finally
+repository finally
+service finally
+controller catches LoginFailedException
+Message: Login failed: invalid username or password
+controller finally
+Exit controller
+main finally
+Exit main

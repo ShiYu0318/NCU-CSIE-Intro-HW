@@ -1,0 +1,16 @@
+Enter main
+Enter controller
+Enter service
+Enter repository
+Enter database
+database runs normally
+database finally
+Exit database
+repository finally
+Exit repository
+service finally
+Exit service
+controller finally
+Exit controller
+main finally
+Exit main

@@ -1,0 +1,14 @@
+Enter main
+Enter controller
+Enter service
+Enter repository
+Enter database
+database throws CriticalSystemException
+database finally
+repository finally
+service finally
+controller finally
+main catches CriticalSystemException
+Message: Database server crashed
+main finally
+Exit main

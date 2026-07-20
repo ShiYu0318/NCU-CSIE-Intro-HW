@@ -1,0 +1,18 @@
+Enter main
+Enter controller
+Enter service
+Enter repository
+Enter database
+database throws ArithmeticException
+database finally
+repository catches ArithmeticException
+repository converts it to CriticalSystemException
+repository finally
+service finally
+controller finally
+main catches CriticalSystemException
+Message: Critical error caused by arithmetic problem
+Cause: ArithmeticException
+Cause message: Division by zero
+main finally
+Exit main

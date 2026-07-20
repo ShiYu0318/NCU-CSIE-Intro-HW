@@ -1,0 +1,16 @@
+Enter main
+Enter controller
+Enter service
+Enter repository
+Enter database
+database throws DataNotFoundException
+database finally
+repository finally
+service catches DataNotFoundException
+Message: Data id not found
+service finally
+Exit service
+controller finally
+Exit controller
+main finally
+Exit main
